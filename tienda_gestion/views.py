@@ -57,7 +57,7 @@ def enviar_correo(request):
             remitente = settings.EMAIL_HOST_USER
             recipiente_lista = [recipiente]
             EmailMessage(encabezado, mensaje, remitente, recipiente_lista, connection=conexion).send()
-    return render(request, 'tienda_gestion/contacto.html')
+    return render(request, 'tienda_gestion/contacto.html', {'contexto': "es problema de objetos?"})
 
 
 # metodo de archivo
