@@ -42,6 +42,8 @@ def consultar_artistas_album(request):
 
 # enviar correo
 def enviar_correo(request):
+    artista = Artista.objects.get(pk=1)
+    print(artista.nombre, artista.bio)
     if request.method == 'POST':
         encabezado = request.POST.get('encabezado')
         mensaje = request.POST.get('mensaje')
@@ -57,7 +59,7 @@ def enviar_correo(request):
             remitente = settings.EMAIL_HOST_USER
             recipiente_lista = [recipiente]
             EmailMessage(encabezado, mensaje, remitente, recipiente_lista, connection=conexion).send()
-    return render(request, 'tienda_gestion/contacto.html', {'contexto': "es problema de objetos?"})
+    return render(request, 'tienda_gestion/contacto.html', {'contexto': "esto es una prueba", 'artista': artista})
 
 
 # metodo de archivo
